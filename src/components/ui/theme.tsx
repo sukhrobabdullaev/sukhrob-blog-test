@@ -9,7 +9,6 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
 
 export function Theme() {
   const { theme, setTheme } = useTheme();
@@ -22,11 +21,7 @@ export function Theme() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" onClick={toggleTheme}>
-          <MoonIcon
-            className={cn(
-              "absolute w-4 h-4 rotate-0 scale-100 transition-all dark:rotate-0 dark:scale-0"
-            )}
-          />
+          <MoonIcon className="absolute w-4 h-4 rotate-0 scale-100 transition-all dark:rotate-0 dark:scale-0" />
           <SunIcon className="w-4 h-4 rotate-0 scale-0 transition-all dark:-rotate-90 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>

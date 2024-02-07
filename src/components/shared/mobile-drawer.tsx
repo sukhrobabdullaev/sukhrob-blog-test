@@ -6,7 +6,7 @@ import {
   DrawerHeader,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Backpack, MenuSquare } from "lucide-react";
+import { MenuSquare } from "lucide-react";
 import DrawerLinks from "./drawer-link";
 import "./animation.css";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";

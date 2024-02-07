@@ -1,15 +1,11 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Drawer } from "@/components/ui/drawer";
 
 export default function Home() {
   return (
     <main className="flex items-center justify-center min-h-[95vh]">
-      <div
-        className={cn("flex space-y-3 flex-col items-center justify-center")}
-      >
+      <div className="flex space-y-3 flex-col items-center justify-center">
         <div className="relative md:w-36 md:h-36 w-24 h-24">
           <Image
             src="/profile.png"
@@ -31,7 +27,6 @@ export default function Home() {
           <Button variant="ghost">
             <Link href="">About me</Link>
           </Button>
-          <Drawer />
         </div>
       </div>
     </main>
