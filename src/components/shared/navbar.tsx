@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -13,38 +11,9 @@ import MobileDrawer from "./mobile-drawer";
 import DrawerLinks from "./drawer-link";
 
 const Navbar = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout | number | undefined;
-
-    const handleScroll = () => {
-      if (timeoutId !== undefined) {
-        clearTimeout(timeoutId as number);
-      }
-
-      timeoutId = setTimeout(() => {
-        setScrollY(window.scrollY);
-      }, 200); // Adjust the debounce time (in milliseconds) as needed
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (timeoutId !== undefined) {
-        clearTimeout(timeoutId as number);
-      }
-    };
-  }, []);
-
-  const isScrolled = scrollY > 60;
-
   return (
     <div
-      className={`p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all ${
-        isScrolled ? "dark:bg-background border-b bg-white" : "bg-transparent"
-      }`}
+      className={`p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all ${"dark:bg-background border-b bg-white"}`}
     >
       <div className="flex items-center justify-between md:max-w-[1220px] mx-auto ">
         <Link href="/" className={cn("font-semibold md:text-lg text-md")}>
