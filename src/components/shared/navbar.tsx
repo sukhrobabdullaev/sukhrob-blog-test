@@ -12,9 +12,7 @@ import DrawerLinks from "./drawer-link";
 
 const Navbar = () => {
   return (
-    <div
-      className={`p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all ${"dark:bg-background border-b bg-white"}`}
-    >
+    <div className="p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all dark:bg-background border-b bg-white">
       <div className="flex items-center justify-between md:max-w-[1220px] mx-auto ">
         <Link href="/" className={cn("font-semibold md:text-lg text-md")}>
           Sukhrob's blog
