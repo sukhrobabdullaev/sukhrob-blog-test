@@ -15,10 +15,8 @@ function getData() {
 async function getLatestPost() {
   try {
     const latestPost = await BlogsService.getLatestOne();
-    console.log("Latest post:", latestPost);
     return latestPost;
   } catch (error) {
-    console.error("Error fetching latest post:", error);
     return null;
   }
 }
