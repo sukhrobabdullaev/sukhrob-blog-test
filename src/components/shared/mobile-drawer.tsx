@@ -13,16 +13,11 @@ import DrawerLinks from "./drawer-link";
 import "./animation.css";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
-
-const MobileDrawer: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (!open) {
-      console.log("Drawer is close");
-    }
-  }, [open]);
-
+export interface Props {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const MobileDrawer: React.FC<Props> = ({ open, setOpen }) => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
@@ -36,7 +31,7 @@ const MobileDrawer: React.FC = () => {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerLinks setOpen={setOpen} />
+          <DrawerLinks setOpen={setOpen} open={open} />
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose>

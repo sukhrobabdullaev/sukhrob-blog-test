@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-interface Props {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { Props } from "./mobile-drawer";
+
 const DrawerLinks: React.FC<Props> = ({ setOpen }) => {
   return (
     <>

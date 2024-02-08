@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,14 @@ import MobileDrawer from "./mobile-drawer";
 import DrawerLinks from "./drawer-link";
 
 const Navbar = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!open) {
+      console.log("Drawer is close");
+    }
+  }, [open]);
+
   return (
     <div className="p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all dark:bg-background border-b bg-white">
       <div className="flex items-center justify-between md:max-w-[1220px] mx-auto ">
@@ -41,12 +50,12 @@ const Navbar = () => {
               <InstagramLogoIcon className="w-5 h-5 dark:hover:text-white" />
             </Link>
             <div className="md:flex md:items-center md:space-x-2   hidden">
-              <DrawerLinks />
+              <DrawerLinks setOpen={setOpen} open={open} />
               <Theme />
             </div>
             <div className="md:hidden flex items-center space-x-2">
               <Theme />
-              <MobileDrawer />
+              <MobileDrawer setOpen={setOpen} open={open} />
             </div>
           </div>
         </div>
