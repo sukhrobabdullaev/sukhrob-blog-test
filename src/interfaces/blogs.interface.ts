@@ -19,6 +19,7 @@ export interface BlogsType {
   content: {
     html: TrustedHTML;
     markdown: string;
+    text: string;
   };
 }
 
