@@ -33,3 +33,20 @@ export interface IsinglePost {
   };
   createdAt: string;
 }
+
+export interface IlatestBlog {
+  createdAt: string;
+  excerpt: string;
+  id: string;
+  slug: string;
+  title: string;
+  coverImage: {
+    url: string;
+    id: string;
+  };
+  category: { slug: string };
+  content: {
+    html: TrustedHTML;
+    text: string;
+  };
+}
