@@ -28,7 +28,6 @@ export const BlogsService = {
           content {
             html
             text
-            markdown
           }
         }
       }
@@ -43,13 +42,13 @@ export const BlogsService = {
       query GetDetailedBlog($slug: String!) {
         post(where: { slug: $slug }) {
           id
+          createdAt
           excerpt
           title
           slug
           content {
             html
             text
-            markdown
           }
         }
       }
@@ -60,5 +59,34 @@ export const BlogsService = {
 
     const res = await request<DetailedBlogResponse>(graphAPI, query, slugName);
     return res.post;
+  },
+
+  async getLatestOne() {
+    const query = gql`
+      query GetLatestOne {
+        posts(last: 1) {
+          createdAt
+          excerpt
+          id
+          slug
+          title
+          coverImage {
+            url
+            id
+          }
+          category {
+            label
+            slug
+          }
+          content {
+            html
+            text
+          }
+        }
+      }
+    `;
+
+    const result = await request<{ posts: BlogsType[] }>(graphAPI, query);
+    return result.posts;
   },
 };

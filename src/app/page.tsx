@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center min-h-[95vh]">
+    <main className="flex items-center justify-center min-h-[94vh]">
       <div className="flex space-y-3 flex-col items-center justify-center">
         <div className="relative md:w-36 md:h-36 w-24 h-24">
           <Image

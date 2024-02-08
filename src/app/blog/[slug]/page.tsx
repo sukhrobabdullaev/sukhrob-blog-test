@@ -1,4 +1,6 @@
+import { dateTimeCalc } from "@/helpers/date.time";
 import { BlogsService } from "@/services/blogs.service";
+import { Calendar } from "lucide-react";
 
 async function getData(id: string) {
   try {
@@ -22,8 +24,8 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
     // Define mappings for HTML tags to Tailwind CSS classes
     const tagMappings: { [key: string]: string } = {
       h1: "text-4xl font-bold mb-4",
-      h2: "text-3xl font-bold mb-3",
-      h3: "text-2xl font-bold mb-2",
+      h2: "md:text-3xl text-xl font-bold mb-3",
+      h3: "md:text-2xl text-xl font-bold mb-2",
       p: "text-base mb-2",
       a: "text-blue-400",
       ul: "list-disc ml-10 my-4",
@@ -43,10 +45,17 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   };
 
   return (
-    <div className="md:max-w-[1220px] mx-auto pt-32">
-      <span>{data.title}</span>
-      <span>{data.excerpt}</span>
+    <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4">
+      <div className="pb-6 border-b">
+        <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+        <h3 className="text-lg text-muted-foreground">{data.excerpt}</h3>
+        <span className="text-base flex items-center gap-2 mt-2 text-green-300">
+          <Calendar className="w-5 h-5 text-red-300" />
+          {dateTimeCalc(data.createdAt)}
+        </span>
+      </div>
       <div
+        className="pt-2"
         dangerouslySetInnerHTML={{
           __html: mapHtmlToTailwind(data?.content?.html),
         }}
