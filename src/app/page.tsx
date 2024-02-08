@@ -25,7 +25,7 @@ export default function Home() {
             <Link href="/blog">Read a blog</Link>
           </Button>
           <Button variant="ghost">
-            <Link href="">About me</Link>
+            <Link href="/aboutme">About me</Link>
           </Button>
         </div>
       </div>

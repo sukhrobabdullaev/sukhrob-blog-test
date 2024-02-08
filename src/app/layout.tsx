@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
@@ -13,10 +11,10 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Sukhrob's blog",
-//   description: "A software engineer, computer science enthusiast",
-// };
+export const metadata: Metadata = {
+  title: "Sukhrob's blog",
+  description: "A software engineer, computer science enthusiast",
+};
 
 export default function RootLayout({
   children,
@@ -38,6 +36,7 @@ export default function RootLayout({
             easing="ease"
             speed={200}
             shadow="0 0 10px #29d, 0 0 5px #29d"
+            showSpinner={false}
           />
           <Navbar />
           <main>{children}</main>

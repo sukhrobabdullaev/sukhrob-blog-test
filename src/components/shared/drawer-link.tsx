@@ -12,6 +12,14 @@ const DrawerLinks: React.FC<Props> = ({ setOpen }) => {
       >
         Blog
       </Link>
+
+      <Link
+        href="/aboutme"
+        onClick={() => setOpen(false)}
+        className="md:hidden block md:hover:scale-[0.9] text-center md:transition-all w-1/2 mx-auto border rounded-sm md:p-0 p-2 active:bg-zinc-500 hover:bg-zinc-700 md:border-0 md:hover:bg-transparent hover:text-white md:hover:text-black md:dark:hover:text-white"
+      >
+        About me
+      </Link>
       <Link
         href="https://youtube.com/@sukhrob-abdullaev"
         onClick={() => setOpen(false)}

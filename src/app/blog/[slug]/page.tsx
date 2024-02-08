@@ -2,6 +2,24 @@ import Link from "next/link";
 import { dateTimeCalc } from "@/helpers/date.time";
 import { BlogsService } from "@/services/blogs.service";
 import { ArrowLeftCircleIcon, Calendar } from "lucide-react";
+import { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.slug;
+  const post = await BlogsService.getDetailedBlog(id);
+
+  return {
+    title: `Blog | ${post.title.substring(0, 20)}...`,
+  };
+}
 
 async function getData(id: string) {
   try {

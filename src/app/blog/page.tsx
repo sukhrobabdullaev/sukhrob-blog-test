@@ -1,5 +1,6 @@
 import BlogCard from "@/components/shared/blog-card";
 import LatestCard from "@/components/shared/latest-card";
+import CardSkeleton from "@/components/skeletons/card-skeleton";
 import { BlogsType } from "@/interfaces/blogs.interface";
 import { BlogsService } from "@/services/blogs.service";
 
@@ -36,6 +37,7 @@ const BlogPage = async () => {
           <h3>No posts available.</h3>
         )}
       </div>
+      {/* <CardSkeleton /> */}
       <div className="flex flex-col gap-4 md:sticky md:top-16 md:w-80 md:h-80 p-4">
         <h3 className="text-center  font-bold md:text-3xl  text-2xl">
           Latest post
