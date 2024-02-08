@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { dateTimeCalc } from "@/helpers/date.time";
 import { BlogsService } from "@/services/blogs.service";
-import { Calendar } from "lucide-react";
+import { ArrowLeftCircleIcon, Calendar } from "lucide-react";
 
 async function getData(id: string) {
   try {
@@ -47,7 +48,12 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4">
       <div className="pb-6 border-b">
-        <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+        <div className="flex gap-2 items-center">
+          <Link href="/blog" className="inline-block animate-moveLeft">
+            <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
+          </Link>
+          <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+        </div>
         <h3 className="text-lg text-muted-foreground">{data.excerpt}</h3>
         <span className="text-base flex items-center gap-2 mt-2 text-green-300">
           <Calendar className="w-5 h-5 text-red-300" />
