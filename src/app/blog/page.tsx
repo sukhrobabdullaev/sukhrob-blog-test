@@ -26,7 +26,7 @@ const BlogPage = async () => {
   const latestPost = await getLatestPost();
 
   return (
-    <div className="md:max-w-[1220px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto pt-32 ">
+    <div className="md:max-w-[1220px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">
       <div className="flex flex-1 overflow-auto flex-col gap-4">
         {data && data.length > 0 ? (
           data.map((post: BlogsType) => {

@@ -13,7 +13,7 @@ const LatestCard = ({ latestpost }: { latestpost: BlogsType }) => {
 
   return (
     <Card
-      className="flex flex-col-reverse dark:bg-cyan-900 bg-cyan-50 gap-2 items-center cursor-pointer"
+      className="flex flex-col-reverse dark:bg-cyan-900 bg-cyan-100 gap-2 items-center cursor-pointer"
       key={latestpost.id}
       onClick={() => router.push(`/blog/${latestpost.slug}`)}
     >

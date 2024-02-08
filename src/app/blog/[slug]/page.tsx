@@ -46,7 +46,7 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   };
 
   return (
-    <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4">
+    <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
       <div className="pb-6 border-b">
         <div className="flex gap-2 items-center">
           <Link href="/blog" className="inline-block animate-moveLeft">

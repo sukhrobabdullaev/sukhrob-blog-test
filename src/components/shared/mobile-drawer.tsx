@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Drawer,
   DrawerClose,
@@ -10,10 +12,19 @@ import { MenuSquare } from "lucide-react";
 import DrawerLinks from "./drawer-link";
 import "./animation.css";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
 
-const MobileDrawer = () => {
+const MobileDrawer: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!open) {
+      console.log("Drawer is close");
+    }
+  }, [open]);
+
   return (
-    <Drawer>
+    <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
         <MenuSquare
           className="w-4 h-4"
@@ -25,7 +36,7 @@ const MobileDrawer = () => {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerLinks />
+          <DrawerLinks setOpen={setOpen} />
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose>

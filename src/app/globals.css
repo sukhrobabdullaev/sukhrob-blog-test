@@ -88,3 +88,13 @@
 .animate-moveLeft {
   animation: moveLeft 2s ease forwards;
 }
+
+.top-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.top-scroll::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 5px;
+}
