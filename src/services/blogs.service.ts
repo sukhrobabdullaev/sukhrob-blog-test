@@ -26,7 +26,9 @@ export const BlogsService = {
             url
           }
           content {
+            html
             text
+            markdown
           }
         }
       }
@@ -47,6 +49,7 @@ export const BlogsService = {
           content {
             html
             text
+            markdown
           }
         }
       }

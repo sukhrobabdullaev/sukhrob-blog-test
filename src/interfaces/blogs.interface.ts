@@ -18,7 +18,7 @@ export interface BlogsType {
   };
   content: {
     html: TrustedHTML;
-    text: string;
+    markdown: string;
   };
 }
 
@@ -30,5 +30,6 @@ export interface IsinglePost {
   content: {
     html: string;
     text: string;
+    markdown: string;
   };
 }
