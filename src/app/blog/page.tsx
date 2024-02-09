@@ -25,6 +25,7 @@ async function getLatestPost() {
 const BlogPage = async () => {
   const data = await getData();
   const latestPost = await getLatestPost();
+  console.log(latestPost);
 
   return (
     <div className="md:max-w-[1220px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">

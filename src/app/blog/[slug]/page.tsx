@@ -17,7 +17,7 @@ export async function generateMetadata(
   const post = await BlogsService.getDetailedBlog(id);
 
   return {
-    title: `Blog | ${post.title.substring(0, 20)}...`,
+    title: `Blog | ${post ? post.title.substring(0, 20) : "not found"}...`,
   };
 }
 
