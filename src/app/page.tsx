@@ -10,8 +10,8 @@ export default function Home() {
           <Image
             src="/profile.png"
             alt="avatar"
-            fill
             priority
+            fill
             className="rounded-full object-cover"
           />
         </div>
