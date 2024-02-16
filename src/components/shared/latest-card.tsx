@@ -13,7 +13,7 @@ const LatestCard = ({ latestpost }: { latestpost: BlogsType }) => {
 
   return (
     <Card
-      className="flex flex-col-reverse dark:bg-cyan-900 bg-cyan-100 gap-2 items-center cursor-pointer"
+      className="flex flex-col-reverse dark:bg-cyan-900 bg-cyan-100 gap-2 items-center cursor-pointer my-card transition-transform duration-300 transform-gpu hover:scale-95 relative"
       key={latestpost.id}
       onClick={() => router.push(`/blog/${latestpost.slug}`)}
     >
@@ -32,7 +32,7 @@ const LatestCard = ({ latestpost }: { latestpost: BlogsType }) => {
             {dateTimeCalc(latestpost.createdAt)}
           </span>
           <div className="flex items-center gap-2">
-            <span className="text-muted-foreground bg-blue-200 rounded-md p-1 text-sm">
+            <span className="bg-[#03fcdf]  rounded-md p-1 text-sm">
               #{latestpost.category.slug}
             </span>
             <span className="text-sm justify-end">
@@ -48,6 +48,11 @@ const LatestCard = ({ latestpost }: { latestpost: BlogsType }) => {
           fill
           className="object-cover"
         />
+      </div>
+      <div className="absolute top-0 left-0 w-full h-full rounded-md bg-black bg-opacity-60 flex justify-center items-center opacity-0 transition-opacity duration-300 hover:opacity-100">
+        <span className="text-white text-lg font-semibold transition-transform duration-300 transform-gpu hover:scale-110">
+          Read more
+        </span>
       </div>
     </Card>
   );

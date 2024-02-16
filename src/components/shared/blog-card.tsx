@@ -14,7 +14,7 @@ const BlogCard = ({ post }: { post: BlogsType }) => {
   return (
     <div className="px-4">
       <Card
-        className="flex justify-between items-center cursor-pointer"
+        className="flex justify-between items-center cursor-pointer my-card transition-transform duration-300 transform-gpu hover:scale-95 relative"
         key={post.id}
         onClick={() => router.push(`/blog/${post.slug}`)}
       >
@@ -33,7 +33,7 @@ const BlogCard = ({ post }: { post: BlogsType }) => {
               {dateTimeCalc(post.createdAt)}
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-muted-foreground bg-blue-200  rounded-md p-1 text-sm">
+              <span className="bg-[#03fcdf] rounded-md p-1 text-sm">
                 #{post.category.slug}
               </span>
               <span className="text-sm justify-end">
@@ -49,6 +49,11 @@ const BlogCard = ({ post }: { post: BlogsType }) => {
             fill
             className="object-cover"
           />
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full rounded-md bg-black bg-opacity-60 flex justify-center items-center opacity-0 transition-opacity duration-300 hover:opacity-100">
+          <span className="text-white text-lg font-semibold transition-transform duration-300 transform-gpu hover:scale-110">
+            Read more
+          </span>
         </div>
       </Card>
     </div>

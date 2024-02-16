@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-[95vh]">
+    <div className="flex items-center justify-center min-h-[90vh]">
       <h1 className="text-3xl">Coming soon..</h1>
     </div>
   );

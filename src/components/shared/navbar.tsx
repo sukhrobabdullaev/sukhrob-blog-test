@@ -21,7 +21,7 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <div className="p-4 drop-shadow-sm fixed z-50 top-0 right-0 left-0 w-full transition-all dark:bg-background border-b bg-white">
+    <div className="p-3 fixed z-50 top-0 right-0 left-0 w-full transition-all border-b backdrop-blur-sm">
       <div className="flex items-center justify-between md:max-w-[1220px] mx-auto ">
         <Link href="/" className={cn("font-semibold md:text-lg text-md")}>
           Sukhrob's blog
