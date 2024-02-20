@@ -3,6 +3,7 @@ import { dateTimeCalc } from "@/helpers/date.time";
 import { BlogsService } from "@/services/blogs.service";
 import { ArrowLeftCircleIcon, Calendar } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
+import NotFound from "./not-found";
 
 type Props = {
   params: { slug: string };
@@ -33,10 +34,10 @@ async function getData(id: string) {
 
 const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   const data = await getData(params.slug);
-  console.log(data);
+  // console.log(data);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <NotFound />;
   }
 
   const mapHtmlToTailwind = (html: string) => {
