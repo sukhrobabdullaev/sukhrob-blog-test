@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default function Home() {
   return (
@@ -30,7 +29,6 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <GoogleAnalytics gaId="G-WYH1S1FFC5" />
     </main>
   );
 }
