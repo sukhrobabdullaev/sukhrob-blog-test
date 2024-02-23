@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import NextTransitionBar from "next-transition-bar";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const montserrat = Montserrat({
   weight: ["300", "400", "500"],
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <GoogleAnalytics gaId="G-WYH1S1FFC5" />
         </ThemeProvider>
       </body>
     </html>
