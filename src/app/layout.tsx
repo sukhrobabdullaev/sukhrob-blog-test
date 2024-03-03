@@ -34,8 +34,8 @@ export default function RootLayout({
           <NextTransitionBar
             color="#03fcdf"
             height={2}
-            easing="ease"
             speed={200}
+            easing="ease"
             shadow="0 0 10px #29d, 0 0 5px #29d"
             showSpinner={false}
           />
