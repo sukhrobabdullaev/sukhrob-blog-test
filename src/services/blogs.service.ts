@@ -2,6 +2,7 @@ import { request, gql } from "graphql-request";
 import { BlogsType, IsinglePost } from "../interfaces/blogs.interface";
 
 const graphAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT!;
+
 interface DetailedBlogResponse {
   post: IsinglePost; // Assuming IsinglePost is the correct type for the post object
 }

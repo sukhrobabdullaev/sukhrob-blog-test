@@ -4,6 +4,7 @@ import { BlogsService } from "@/services/blogs.service";
 import { ArrowLeftCircleIcon, Calendar } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 import NotFound from "./not-found";
+import DisqusComments from "./disqus-comments";
 
 type Props = {
   params: { slug: string };
@@ -85,6 +86,7 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
           __html: mapHtmlToTailwind(data?.content?.html),
         }}
       ></div>
+      {/* <DisqusComments data={data} /> */}
     </div>
   );
 };
