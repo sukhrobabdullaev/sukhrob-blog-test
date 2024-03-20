@@ -50,3 +50,13 @@ export interface IlatestBlog {
     text: string;
   };
 }
+
+export interface ProjectsType {
+  slug: string;
+  technolgies: string[];
+  title: string;
+  description: string;
+  image: {
+    url: string;
+  }[];
+}

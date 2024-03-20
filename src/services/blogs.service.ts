@@ -1,5 +1,9 @@
 import { request, gql } from "graphql-request";
-import { BlogsType, IsinglePost } from "../interfaces/blogs.interface";
+import {
+  BlogsType,
+  IsinglePost,
+  ProjectsType,
+} from "../interfaces/blogs.interface";
 
 const graphAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT!;
 
@@ -89,5 +93,26 @@ export const BlogsService = {
 
     const result = await request<{ posts: BlogsType[] }>(graphAPI, query);
     return result.posts;
+  },
+};
+
+export const ProjectsService = {
+  async getAllProject() {
+    const query = gql`
+      query Projects {
+        projects {
+          slug
+          technolgies
+          title
+          description
+          image {
+            url
+          }
+        }
+      }
+    `;
+
+    const result = await request<{ projects: ProjectsType[] }>(graphAPI, query);
+    return result;
   },
 };

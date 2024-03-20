@@ -12,7 +12,7 @@ import { MenuSquare } from "lucide-react";
 import DrawerLinks from "./drawer-link";
 import "./animation.css";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
+
 export interface Props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

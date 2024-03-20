@@ -16,7 +16,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (!open) {
-      console.log("Drawer is close");
+      // console.log("Drawer is close");
     }
   }, [open]);
 
