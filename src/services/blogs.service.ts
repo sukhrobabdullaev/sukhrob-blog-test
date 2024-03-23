@@ -2,6 +2,7 @@ import { request, gql } from "graphql-request";
 import {
   BlogsType,
   IsinglePost,
+  IsingleProject,
   ProjectsType,
 } from "../interfaces/blogs.interface";
 
@@ -9,6 +10,9 @@ const graphAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT!;
 
 interface DetailedBlogResponse {
   post: IsinglePost; // Assuming IsinglePost is the correct type for the post object
+}
+interface DetailedProjectResponse {
+  project: IsingleProject;
 }
 export const BlogsService = {
   async getAllBlog() {
@@ -114,5 +118,34 @@ export const ProjectsService = {
 
     const result = await request<{ projects: ProjectsType[] }>(graphAPI, query);
     return result;
+  },
+
+  async getDetailedProject(slug: string) {
+    const query = gql`
+      query SingleProject($slug: String!) {
+        project(where: { slug: $slug }) {
+          description
+          image {
+            url
+          }
+          title
+          technolgies
+          slug
+          content {
+            html
+          }
+        }
+      }
+    `;
+    const slugName = {
+      slug,
+    };
+
+    const res = await request<DetailedProjectResponse>(
+      graphAPI,
+      query,
+      slugName
+    );
+    return res.project;
   },
 };

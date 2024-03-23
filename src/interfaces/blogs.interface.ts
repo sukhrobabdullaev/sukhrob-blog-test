@@ -60,3 +60,16 @@ export interface ProjectsType {
     url: string;
   }[];
 }
+
+export interface IsingleProject {
+  description: string;
+  image: {
+    url: string;
+  };
+  title: string;
+  technolgies: string[];
+  slug: string;
+  content: {
+    html: string;
+  };
+}

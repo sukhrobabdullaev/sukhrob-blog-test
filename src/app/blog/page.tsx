@@ -1,6 +1,5 @@
 import BlogCard from "@/components/shared/blog-card";
 import LatestCard from "@/components/shared/latest-card";
-import CardSkeleton from "@/components/skeletons/card-skeleton";
 import { BlogsType } from "@/interfaces/blogs.interface";
 import { BlogsService } from "@/services/blogs.service";
 
