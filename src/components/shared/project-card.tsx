@@ -51,7 +51,7 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
           {project.image.map((img) => (
             <CarouselItem key={img.url}>
               <CardContent className="flex aspect-square items-center justify-center p-2">
-                <div className="relative md:h-72 md:w-64 w-64 h-64">
+                <div className="relative w-80 h-80">
                   <Image
                     src={img.url}
                     alt={project.title}
