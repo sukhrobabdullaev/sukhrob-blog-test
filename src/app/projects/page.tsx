@@ -36,7 +36,7 @@ const Projects = async () => {
       <h1 className="text-[24px] mb-3 text-center font-semibold">Projects</h1>
       <div className="flex md:flex-row md:gap-16 gap-6 flex-col ">
         {projects.map((project) => (
-          <Card className="w-full max-w-xs">
+          <Card className="w-full max-w-xs" key={project.slug}>
             <CardHeader className="pt-3 pb-0 px-6">
               <CardTitle>{project.title}</CardTitle>
               <CardDescription className="line-clamp-6">
