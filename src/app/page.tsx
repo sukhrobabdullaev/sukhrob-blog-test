@@ -10,9 +10,10 @@ export default function Home() {
           <Image
             src="/profile.png"
             alt="avatar"
-            priority
-            fill
             className="rounded-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1220px) 50vw, 33vw"
+            priority
           />
         </div>
         <h1 className="text-lg font-semibold">Sukhrob Abdullaev</h1>
