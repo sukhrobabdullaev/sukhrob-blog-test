@@ -48,6 +48,8 @@ const BlogCard = ({ post }: { post: BlogsType }) => {
             alt={post.title}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1220px) 50vw, 33vw"
+            priority
           />
         </div>
         <div className="absolute top-0 left-0 w-full h-full rounded-md bg-black bg-opacity-60 flex justify-center items-center opacity-0 transition-opacity duration-300 hover:opacity-100">
