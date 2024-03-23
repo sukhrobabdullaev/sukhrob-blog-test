@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ProjectsService } from "@/services/blogs.service";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -17,6 +16,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import CustomImage from "@/components/shared/image";
 
 async function getData() {
   try {
@@ -32,44 +32,49 @@ const Projects = async () => {
   const projects = await getData();
   console.log(projects);
   return (
-    <div className="md:max-w-[1220px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20">
-      <h1>Projects</h1>
-      {projects.map((project) => (
-        <div>
-          <Carousel className="w-full max-w-xs" key={project.title}>
-            <CarouselContent>
-              {project.image.map((img) => (
-                <CarouselItem key={img.url}>
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <Image src={img.url} alt=";" width={300} height={300} />
+    <div className="md:max-w-[1220px] mx-auto grid place-items-center md:pt-24 pt-20">
+      <h1 className="text-[24px] mb-3 text-center font-semibold">Projects</h1>
+      <div className="flex md:flex-row md:gap-16 gap-6 flex-col ">
+        {projects.map((project) => (
+          <div>
+            <Card className="w-full max-w-xs">
+              <CardHeader className="pt-3 pb-0 px-6">
+                <CardTitle>{project.title}</CardTitle>
+                <CardDescription className="line-clamp-6">
+                  {project.description}
+                </CardDescription>
+              </CardHeader>
+              <Carousel className="w-full" key={project.title}>
+                <CarouselContent>
+                  {project.image.map((img) => (
+                    <CarouselItem key={img.url}>
+                      <CardContent className="flex aspect-square items-center justify-center p-2">
+                        <div className="relative md:h-72 md:w-64 w-64 h-64">
+                          <Image
+                            src={img.url}
+                            alt={project.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
                       </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-          <Card className="w-full max-w-xs">
-            <CardHeader>
-              <CardTitle>{project.title}</CardTitle>
-              <CardDescription className="line-clamp-6">
-                {project.description}
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="flex gap-2 flex-wrap">
-              {project?.technolgies.map((el) => (
-                <span className="text-indigo-400" key={el}>
-                  #{el.toLowerCase()}
-                </span>
-              ))}
-            </CardFooter>
-          </Card>
-        </div>
-      ))}
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+              <CardFooter className="flex gap-2 flex-wrap">
+                {project?.technolgies.map((el) => (
+                  <span className="text-indigo-400" key={el}>
+                    #{el.toLowerCase()}
+                  </span>
+                ))}
+              </CardFooter>
+            </Card>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
