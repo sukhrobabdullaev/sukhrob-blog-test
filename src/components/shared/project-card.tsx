@@ -18,20 +18,33 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { ArrowBigRightDashIcon } from "lucide-react";
 
 const ProjectCard = ({ project }: { project: ProjectsType }) => {
   const router = useRouter();
 
   return (
-    <Card
-      className="w-full max-w-xs"
-      onClick={() => router.push(`/projects/${project.slug}`)}
-    >
-      <CardHeader className="pt-3 pb-0 px-6">
+    <Card className="w-full max-w-xs flex flex-col-reverse md:flex-col">
+      <CardHeader className="pt-4 pb-0 px-6 flex flex-col gap-2">
         <CardTitle>{project.title}</CardTitle>
-        <CardDescription className="line-clamp-6">
+        <CardDescription className="line-clamp-3">
           {project.description}
         </CardDescription>
+        <CardFooter className="flex gap-2 p-0 md:hidden flex-wrap">
+          {project?.technolgies.map((el) => (
+            <span className="text-indigo-400" key={el}>
+              #{el.toLowerCase()}
+            </span>
+          ))}
+        </CardFooter>
+        <button
+          className="flex items-center gap-1 text-md text-green-600 md:pb-0 pb-4"
+          onClick={() => router.push(`/projects/${project.slug}`)}
+        >
+          Read more
+          <ArrowBigRightDashIcon size={20} />
+        </button>
       </CardHeader>
       <Carousel className="w-full" key={project.title}>
         <CarouselContent>
@@ -55,7 +68,7 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <CardFooter className="flex gap-2 flex-wrap">
+      <CardFooter className="md:flex md:gap-2 pb-0 px-6 md:p-6 hidden md:flex-wrap">
         {project?.technolgies.map((el) => (
           <span className="text-indigo-400" key={el}>
             #{el.toLowerCase()}

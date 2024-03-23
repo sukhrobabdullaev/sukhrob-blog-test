@@ -40,10 +40,7 @@ const ProjectDetailedPage = async ({
 }: {
   params: { slug: string };
 }) => {
-  console.log(params.slug);
-
   const data = await getData(params.slug);
-  console.log(data);
 
   if (!data) {
     return <NotFound />;
@@ -82,18 +79,16 @@ const ProjectDetailedPage = async ({
           </Link>
           <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
         </div>
-        <h3 className="text-lg text-muted-foreground">{data.title}</h3>
-        {/* <span className="text-base flex items-center gap-2 mt-2 text-green-300">
-          <Calendar className="w-5 h-5 text-red-300" />
-          {dateTimeCalc(data.createdAt)}
-        </span> */}
       </div>
-      <div
-        className="pt-2"
-        dangerouslySetInnerHTML={{
-          __html: mapHtmlToTailwind(data?.content?.html),
-        }}
-      />
+      <div className="mt-2 ">
+        <p className="pb-2 border-b">{data.description}</p>
+        <div
+          className="pt-2"
+          dangerouslySetInnerHTML={{
+            __html: mapHtmlToTailwind(data?.content?.html),
+          }}
+        />
+      </div>
     </div>
   );
 };
