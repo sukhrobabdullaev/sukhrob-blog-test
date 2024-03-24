@@ -53,7 +53,7 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
       ol: "list-decimal ml-10 my-4",
       code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm",
       pre: "bg-gray-100 dark:bg-gray-800 overflow-y-scroll rounded-md p-2 text-sm ",
-      // Add more mappings for other HTML tags as needed
+      img: "border-green-300 border",
     };
 
     // Replace each HTML tag with its corresponding Tailwind CSS classes

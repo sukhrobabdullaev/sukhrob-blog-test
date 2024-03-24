@@ -33,7 +33,6 @@ const PersonalProjectCard = ({ project }: { project: ProjectsType }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const images = project?.image.map((image) => image.url);
-  // console.log(images);
 
   const router = useRouter();
 
@@ -128,7 +127,7 @@ const PersonalProjectCard = ({ project }: { project: ProjectsType }) => {
             className="flex gap-1 items-center border p-2 rounded-md hover:bg-blue-500 hover:text-slate-900 "
             href={project.github}
           >
-            Github{" "}
+            Github
             <GitHubLogoIcon className="dark:text-white text-black text-lg" />
           </Link>
         )}

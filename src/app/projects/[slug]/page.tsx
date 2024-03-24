@@ -81,6 +81,7 @@ const ProjectDetailedPage = async ({
       ol: "list-decimal ml-10 my-4",
       pre: "bg-gray-100 dark:bg-gray-800 overflow-y-scroll rounded-md p-2 text-sm ",
       code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm",
+      img: "border-red-300 border",
       // Add more mappings for other HTML tags as needed
     };
 
@@ -96,13 +97,20 @@ const ProjectDetailedPage = async ({
   return (
     <>
       {data && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
-          <div className="pb-6 border-b">
+        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
                 <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
               </Link>
               <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+            </div>
+            <div className="flex space-x-4 flex-wrap">
+              {data?.technolgies.map((el) => (
+                <span className="text-indigo-400" key={el}>
+                  #{el.toLowerCase()}
+                </span>
+              ))}
             </div>
           </div>
           <div className="mt-2 ">
@@ -117,8 +125,8 @@ const ProjectDetailedPage = async ({
         </div>
       )}
       {personalProjects && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
-          <div className="pb-6 border-b">
+        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
                 <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
@@ -126,6 +134,13 @@ const ProjectDetailedPage = async ({
               <h1 className="md:text-4xl text-2xl font-bold">
                 {personalProjects.title}
               </h1>
+            </div>
+            <div className="flex space-x-4 flex-wrap">
+              {personalProjects?.technolgies.map((el) => (
+                <span className="text-indigo-400" key={el}>
+                  #{el.toLowerCase()}
+                </span>
+              ))}
             </div>
           </div>
           <div className="mt-2 ">
@@ -140,8 +155,8 @@ const ProjectDetailedPage = async ({
         </div>
       )}
       {petProjects && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
-          <div className="pb-6 border-b">
+        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
                 <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
@@ -149,6 +164,13 @@ const ProjectDetailedPage = async ({
               <h1 className="md:text-4xl text-2xl font-bold">
                 {petProjects.title}
               </h1>
+            </div>
+            <div className="flex space-x-4 flex-wrap">
+              {petProjects?.technolgies.map((el) => (
+                <span className="text-indigo-400" key={el}>
+                  #{el.toLowerCase()}
+                </span>
+              ))}
             </div>
           </div>
           <div className="mt-2 ">
