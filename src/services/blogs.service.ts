@@ -11,8 +11,8 @@ const graphAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT!;
 interface DetailedBlogResponse {
   post: IsinglePost; // Assuming IsinglePost is the correct type for the post object
 }
-interface DetailedProjectResponse {
-  project: IsingleProject;
+interface DetailedWorkProject {
+  workProject: IsingleProject;
 }
 export const BlogsService = {
   async getAllBlog() {
@@ -101,14 +101,15 @@ export const BlogsService = {
 };
 
 export const ProjectsService = {
-  async getAllProject() {
+  async getAllWorkExamples() {
     const query = gql`
-      query Projects {
-        projects {
+      query WorkExamples {
+        workProjects {
           slug
           technolgies
           title
           description
+          demo
           image {
             url
           }
@@ -116,24 +117,28 @@ export const ProjectsService = {
       }
     `;
 
-    const result = await request<{ projects: ProjectsType[] }>(graphAPI, query);
+    const result = await request<{ workProjects: ProjectsType[] }>(
+      graphAPI,
+      query
+    );
     return result;
   },
 
-  async getDetailedProject(slug: string) {
+  async getWorkProOne(slug: string) {
     const query = gql`
-      query SingleProject($slug: String!) {
-        project(where: { slug: $slug }) {
-          description
-          image {
-            url
-          }
-          title
-          technolgies
+      query WorkProOne($slug: String!) {
+        workProject(where: { slug: $slug }) {
           slug
+          description
+          demo
           content {
             html
           }
+          image {
+            url
+          }
+          technolgies
+          title
         }
       }
     `;
@@ -141,11 +146,7 @@ export const ProjectsService = {
       slug,
     };
 
-    const res = await request<DetailedProjectResponse>(
-      graphAPI,
-      query,
-      slugName
-    );
-    return res.project;
+    const res = await request<DetailedWorkProject>(graphAPI, query, slugName);
+    return res.workProject;
   },
 };

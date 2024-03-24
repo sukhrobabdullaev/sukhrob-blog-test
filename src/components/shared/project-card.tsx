@@ -19,7 +19,8 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { ArrowBigRightDashIcon } from "lucide-react";
+import { ArrowBigRightDashIcon, Link2Icon } from "lucide-react";
+import Link from "next/link";
 
 const ProjectCard = ({ project }: { project: ProjectsType }) => {
   const router = useRouter();
@@ -68,6 +69,9 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <Link className="flex gap-1 items-center border" href={project.demo}>
+        Demo <Link2Icon size={20} />
+      </Link>
       <CardFooter className="md:flex md:gap-2 pb-0 px-6 md:p-6 hidden md:flex-wrap">
         {project?.technolgies.map((el) => (
           <span className="text-indigo-400" key={el}>

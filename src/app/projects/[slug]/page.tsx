@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { dateTimeCalc } from "@/helpers/date.time";
-import { BlogsService, ProjectsService } from "@/services/blogs.service";
+import { ProjectsService } from "@/services/blogs.service";
 import { ArrowLeftCircleIcon, Calendar } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 import NotFound from "./not-found";
-import Image from "next/image";
 
 type Props = {
   params: { slug: string };
@@ -16,7 +14,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = params.slug;
-  const project = await ProjectsService.getDetailedProject(id);
+  const project = await ProjectsService.getWorkProOne(id);
 
   return {
     title: `Project | ${
@@ -27,7 +25,7 @@ export async function generateMetadata(
 
 async function getData(id: string) {
   try {
-    const detailedProject = await ProjectsService.getDetailedProject(id);
+    const detailedProject = await ProjectsService.getWorkProOne(id);
     return detailedProject;
   } catch (error) {
     console.error("Error fetching detailed blog:", error);
@@ -41,6 +39,7 @@ const ProjectDetailedPage = async ({
   params: { slug: string };
 }) => {
   const data = await getData(params.slug);
+  console.log(data);
 
   if (!data) {
     return <NotFound />;

@@ -55,6 +55,8 @@ export interface ProjectsType {
   slug: string;
   technolgies: string[];
   title: string;
+  demo: string;
+  github?: string;
   description: string;
   image: {
     url: string;
@@ -62,6 +64,8 @@ export interface ProjectsType {
 }
 
 export interface IsingleProject {
+  demo: string;
+  github?: string;
   description: string;
   image: {
     url: string;
