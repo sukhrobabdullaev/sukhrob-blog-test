@@ -18,12 +18,28 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 import { ArrowBigRightDashIcon, Link2Icon } from "lucide-react";
 import Link from "next/link";
+import { useState, useCallback } from "react";
+import ImageViewer from "react-simple-image-viewer";
 
 const ProjectCard = ({ project }: { project: ProjectsType }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const images = project?.image.map((image) => image.url);
+  // console.log(images);
+
   const router = useRouter();
+
+  const openImageViewer = useCallback((index: number) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
 
   return (
     <Card className="w-full max-w-xs flex flex-col-reverse md:flex-col">
@@ -49,17 +65,20 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
       </CardHeader>
       <Carousel className="w-full" key={project.title}>
         <CarouselContent>
-          {project.image.map((img) => (
-            <CarouselItem key={img.url}>
+          {images.map((src, index) => (
+            <CarouselItem key={index} className="">
               <CardContent className="flex aspect-square items-center justify-center p-2">
                 <div className="relative w-80 h-80">
                   <Image
-                    src={img.url}
-                    alt={project.title}
+                    src={src}
+                    onClick={() => openImageViewer(index)}
+                    alt={""}
                     fill
-                    className="object-contain"
+                    key={index}
+                    className="object-contain cursor-pointer"
                     sizes="(max-width: 768px) 100vw, (max-width: 1220px) 50vw, 33vw"
                     priority
+                    style={{ margin: "2px" }}
                   />
                 </div>
               </CardContent>
@@ -69,9 +88,28 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <Link className="flex gap-1 items-center border" href={project.demo}>
-        Demo <Link2Icon size={20} />
-      </Link>
+      <div className="fixed z-50 ">
+        {isViewerOpen && (
+          <ImageViewer
+            src={images}
+            currentIndex={currentImage}
+            onClose={closeImageViewer}
+            disableScroll={false}
+            backgroundStyle={{
+              backgroundColor: "rgba(0,0,0,0.9)",
+            }}
+            closeOnClickOutside={true}
+          />
+        )}
+      </div>
+      <div className="flex justify-between px-6 md:pt-0 pt-2 text-blue-500">
+        <Link
+          className="flex gap-1 items-center border p-2 rounded-md hover:bg-blue-500 hover:text-muted-foreground font-semibold"
+          href={project.demo}
+        >
+          Demo <Link2Icon size={20} />
+        </Link>
+      </div>
       <CardFooter className="md:flex md:gap-2 pb-0 px-6 md:p-6 hidden md:flex-wrap">
         {project?.technolgies.map((el) => (
           <span className="text-indigo-400" key={el}>
