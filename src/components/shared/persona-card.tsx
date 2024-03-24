@@ -18,12 +18,18 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowBigRightDashIcon, Link2Icon, ViewIcon } from "lucide-react";
+import {
+  ArrowBigRightDashIcon,
+  GithubIcon,
+  Link2Icon,
+  ViewIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-const ProjectCard = ({ project }: { project: ProjectsType }) => {
+const PersonalProjectCard = ({ project }: { project: ProjectsType }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const images = project?.image.map((image) => image.url);
@@ -117,6 +123,15 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
         >
           Demo <Link2Icon className="dark:text-white text-black" size={18} />
         </Link>
+        {project.github && (
+          <Link
+            className="flex gap-1 items-center border p-2 rounded-md hover:bg-blue-500 hover:text-slate-900 "
+            href={project.github}
+          >
+            Github{" "}
+            <GitHubLogoIcon className="dark:text-white text-black text-lg" />
+          </Link>
+        )}
       </div>
       <CardFooter className="md:flex md:gap-2 pb-0 px-6 md:p-6 hidden md:flex-wrap">
         {project?.technolgies.map((el) => (
@@ -129,4 +144,4 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
   );
 };
 
-export default ProjectCard;
+export default PersonalProjectCard;

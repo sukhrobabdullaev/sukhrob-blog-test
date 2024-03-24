@@ -15,10 +15,15 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.slug;
   const project = await ProjectsService.getWorkProOne(id);
+  const personalProjects = await ProjectsService.getPersonalPro(id);
 
   return {
     title: `Project | ${
-      project ? project.title.substring(0, 20) : "not found"
+      project
+        ? project.title.substring(0, 20)
+        : personalProjects
+        ? personalProjects.title.substring(0, 20)
+        : "not found"
     }...`,
   };
 }
@@ -32,18 +37,23 @@ async function getData(id: string) {
     return null;
   }
 }
-
+async function getPersonalProjects(id: string) {
+  try {
+    const detailedPersonalProject = await ProjectsService.getPersonalPro(id);
+    return detailedPersonalProject;
+  } catch (error) {
+    console.error("Error fetching detailed blog:", error);
+    return null;
+  }
+}
 const ProjectDetailedPage = async ({
   params,
 }: {
   params: { slug: string };
 }) => {
   const data = await getData(params.slug);
-  console.log(data);
-
-  if (!data) {
-    return <NotFound />;
-  }
+  const personalProjects = await getPersonalProjects(params.slug);
+  // console.log(personalProjects);
 
   const mapHtmlToTailwind = (html: string) => {
     // Define mappings for HTML tags to Tailwind CSS classes
@@ -70,25 +80,52 @@ const ProjectDetailedPage = async ({
   };
 
   return (
-    <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
-      <div className="pb-6 border-b">
-        <div className="flex gap-2 items-center">
-          <Link href="/projects" className="inline-block animate-moveLeft">
-            <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
-          </Link>
-          <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+    <>
+      {data && (
+        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-6 border-b">
+            <div className="flex gap-2 items-center">
+              <Link href="/projects" className="inline-block animate-moveLeft">
+                <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
+              </Link>
+              <h1 className="md:text-4xl text-2xl font-bold">{data.title}</h1>
+            </div>
+          </div>
+          <div className="mt-2 ">
+            <p className="pb-2 border-b">{data.description}</p>
+            <div
+              className="pt-2"
+              dangerouslySetInnerHTML={{
+                __html: mapHtmlToTailwind(data?.content?.html),
+              }}
+            />
+          </div>
         </div>
-      </div>
-      <div className="mt-2 ">
-        <p className="pb-2 border-b">{data.description}</p>
-        <div
-          className="pt-2"
-          dangerouslySetInnerHTML={{
-            __html: mapHtmlToTailwind(data?.content?.html),
-          }}
-        />
-      </div>
-    </div>
+      )}
+      {personalProjects && (
+        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-6 border-b">
+            <div className="flex gap-2 items-center">
+              <Link href="/projects" className="inline-block animate-moveLeft">
+                <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
+              </Link>
+              <h1 className="md:text-4xl text-2xl font-bold">
+                {personalProjects.title}
+              </h1>
+            </div>
+          </div>
+          <div className="mt-2 ">
+            <p className="pb-2 border-b">{personalProjects.description}</p>
+            <div
+              className="pt-2"
+              dangerouslySetInnerHTML={{
+                __html: mapHtmlToTailwind(personalProjects?.content?.html),
+              }}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -14,6 +14,9 @@ interface DetailedBlogResponse {
 interface DetailedWorkProject {
   workProject: IsingleProject;
 }
+interface DetailedPersonlProject {
+  personalProject: IsingleProject;
+}
 export const BlogsService = {
   async getAllBlog() {
     const query = gql`
@@ -148,5 +151,59 @@ export const ProjectsService = {
 
     const res = await request<DetailedWorkProject>(graphAPI, query, slugName);
     return res.workProject;
+  },
+  async getAllPersonalProjects() {
+    const query = gql`
+      query PersonalProjects {
+        personalProjects {
+          demo
+          github
+          image {
+            url
+          }
+          slug
+          technolgies
+          title
+          description
+        }
+      }
+    `;
+
+    const result = await request<{ personalProjects: ProjectsType[] }>(
+      graphAPI,
+      query
+    );
+    return result;
+  },
+
+  async getPersonalPro(slug: string) {
+    const query = gql`
+      query PersonalProOne($slug: String!) {
+        personalProject(where: { slug: $slug }) {
+          demo
+          github
+          slug
+          description
+          content {
+            html
+          }
+          image {
+            url
+          }
+          technolgies
+          title
+        }
+      }
+    `;
+    const slugName = {
+      slug,
+    };
+
+    const res = await request<DetailedPersonlProject>(
+      graphAPI,
+      query,
+      slugName
+    );
+    return res.personalProject;
   },
 };
