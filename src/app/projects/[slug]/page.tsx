@@ -79,8 +79,8 @@ const ProjectDetailedPage = async ({
       a: "text-blue-400",
       ul: "list-disc ml-10 my-4",
       ol: "list-decimal ml-10 my-4",
-      code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm",
       pre: "bg-gray-100 dark:bg-gray-800 overflow-y-scroll rounded-md p-2 text-sm ",
+      code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm",
       // Add more mappings for other HTML tags as needed
     };
 
