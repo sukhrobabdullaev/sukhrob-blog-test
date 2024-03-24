@@ -16,6 +16,7 @@ export async function generateMetadata(
   const id = params.slug;
   const project = await ProjectsService.getWorkProOne(id);
   const personalProjects = await ProjectsService.getPersonalPro(id);
+  const petProjects = await ProjectsService.getPetPro(id);
 
   return {
     title: `Project | ${
@@ -23,6 +24,8 @@ export async function generateMetadata(
         ? project.title.substring(0, 20)
         : personalProjects
         ? personalProjects.title.substring(0, 20)
+        : petProjects
+        ? petProjects.title.substring(0, 20)
         : "not found"
     }...`,
   };
@@ -46,6 +49,17 @@ async function getPersonalProjects(id: string) {
     return null;
   }
 }
+
+async function getPetProjects(id: string) {
+  try {
+    const detailedPetProject = await ProjectsService.getPetPro(id);
+    return detailedPetProject;
+  } catch (error) {
+    console.error("Error fetching detailed blog:", error);
+    return null;
+  }
+}
+
 const ProjectDetailedPage = async ({
   params,
 }: {
@@ -53,7 +67,7 @@ const ProjectDetailedPage = async ({
 }) => {
   const data = await getData(params.slug);
   const personalProjects = await getPersonalProjects(params.slug);
-  // console.log(personalProjects);
+  const petProjects = await getPetProjects(params.slug);
 
   const mapHtmlToTailwind = (html: string) => {
     // Define mappings for HTML tags to Tailwind CSS classes
@@ -120,6 +134,29 @@ const ProjectDetailedPage = async ({
               className="pt-2"
               dangerouslySetInnerHTML={{
                 __html: mapHtmlToTailwind(personalProjects?.content?.html),
+              }}
+            />
+          </div>
+        </div>
+      )}
+      {petProjects && (
+        <div className="md:max-w-[1000px] mx-auto md:pt-32 pt-20 px-4 overflow-y-auto top-scroll">
+          <div className="pb-6 border-b">
+            <div className="flex gap-2 items-center">
+              <Link href="/projects" className="inline-block animate-moveLeft">
+                <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" />
+              </Link>
+              <h1 className="md:text-4xl text-2xl font-bold">
+                {petProjects.title}
+              </h1>
+            </div>
+          </div>
+          <div className="mt-2 ">
+            <p className="pb-2 border-b">{petProjects.description}</p>
+            <div
+              className="pt-2"
+              dangerouslySetInnerHTML={{
+                __html: mapHtmlToTailwind(petProjects?.content?.html),
               }}
             />
           </div>

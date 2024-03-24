@@ -17,6 +17,9 @@ interface DetailedWorkProject {
 interface DetailedPersonlProject {
   personalProject: IsingleProject;
 }
+interface DetailedPetPoject {
+  petPoject: IsingleProject;
+}
 export const BlogsService = {
   async getAllBlog() {
     const query = gql`
@@ -205,5 +208,56 @@ export const ProjectsService = {
       slugName
     );
     return res.personalProject;
+  },
+
+  async getAllPetProjects() {
+    const query = gql`
+      query PetProjects {
+        petPojects {
+          demo
+          github
+          image {
+            url
+          }
+          slug
+          technolgies
+          title
+          description
+        }
+      }
+    `;
+
+    const result = await request<{ petPojects: ProjectsType[] }>(
+      graphAPI,
+      query
+    );
+    return result;
+  },
+
+  async getPetPro(slug: string) {
+    const query = gql`
+      query PetProOne($slug: String!) {
+        petPoject(where: { slug: $slug }) {
+          demo
+          github
+          slug
+          description
+          content {
+            html
+          }
+          image {
+            url
+          }
+          technolgies
+          title
+        }
+      }
+    `;
+    const slugName = {
+      slug,
+    };
+
+    const res = await request<DetailedPetPoject>(graphAPI, query, slugName);
+    return res.petPoject;
   },
 };
