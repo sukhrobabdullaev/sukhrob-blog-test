@@ -50,7 +50,7 @@ const Projects = async () => {
         </div>
       </div>
 
-      <div className="md:max-w-[1220px] mx-auto grid place-items-center md:pt-24 pt-20">
+      <div className="md:max-w-[1220px] mx-auto grid place-items-center md:pt-10 pt-8">
         <h1 className="text-[24px] mb-3 text-center font-semibold">
           Personal Projects
         </h1>
@@ -61,7 +61,7 @@ const Projects = async () => {
         </div>
       </div>
 
-      <div className="md:max-w-[1220px] mx-auto grid place-items-center md:pt-24 pt-20">
+      <div className="md:max-w-[1220px] mx-auto grid place-items-center md:pt-10 pt-8">
         <h1 className="text-[24px] mb-3 text-center font-semibold">
           Pet Projects
         </h1>
