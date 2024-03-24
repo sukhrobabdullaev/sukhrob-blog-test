@@ -12,8 +12,8 @@ export default function Home() {
             alt="avatar"
             className="rounded-full object-cover"
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1220px) 50vw, 33vw"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1220px) 50vw, 33vw"
           />
         </div>
         <h1 className="text-lg font-semibold">Sukhrob Abdullaev</h1>
