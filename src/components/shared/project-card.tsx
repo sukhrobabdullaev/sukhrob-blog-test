@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowBigRightDashIcon, Link2Icon } from "lucide-react";
+import { ArrowBigRightDashIcon, Link2Icon, ViewIcon } from "lucide-react";
 import Link from "next/link";
 import { useState, useCallback } from "react";
 import ImageViewer from "react-simple-image-viewer";
@@ -68,10 +68,12 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
           {images.map((src, index) => (
             <CarouselItem key={index} className="">
               <CardContent className="flex aspect-square items-center justify-center p-2">
-                <div className="relative w-80 h-80">
+                <div
+                  className="relative w-80 h-80"
+                  onClick={() => openImageViewer(index)}
+                >
                   <Image
                     src={src}
-                    onClick={() => openImageViewer(index)}
                     alt={""}
                     fill
                     key={index}
@@ -80,6 +82,11 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
                     priority
                     style={{ margin: "2px" }}
                   />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 cursor-pointer w-full">
+                    <span className="text-white text-sm">
+                      <ViewIcon size={20} />
+                    </span>
+                  </div>
                 </div>
               </CardContent>
             </CarouselItem>
@@ -88,6 +95,7 @@ const ProjectCard = ({ project }: { project: ProjectsType }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+
       <div className="fixed z-50 ">
         {isViewerOpen && (
           <ImageViewer
