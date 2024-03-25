@@ -65,7 +65,7 @@ const PersonalProjectCard = ({ project }: { project: ProjectsType }) => {
           onClick={() => router.push(`/projects/${project.slug}`)}
         >
           Read more
-          <ArrowBigRightDashIcon size={20} />
+          <ArrowBigRightDashIcon size={18} />
         </button>
       </CardHeader>
       <Carousel className="w-full" key={project.title}>

@@ -39,7 +39,7 @@ const Projects = async () => {
 
   return (
     <>
-      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center md:pt-24 pt-20">
+      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center md:flex-row flex-col md:pt-24 pt-20">
         <h1 className="text-[24px] mb-3 text-center font-semibold">
           Work Examples
         </h1>
@@ -50,7 +50,7 @@ const Projects = async () => {
         </div>
       </div>
 
-      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center flex-col md:pt-10 pt-8">
+      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center md:flex-row flex-col md:pt-10 pt-8">
         <h1 className="text-[24px] mb-3 text-center font-semibold">
           Personal Projects
         </h1>
@@ -61,7 +61,7 @@ const Projects = async () => {
         </div>
       </div>
 
-      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center flex-col md:pt-10 pt-8">
+      <div className="md:max-w-[1220px] mx-auto flex flex-wrap items-center justify-center md:flex-row flex-col md:pt-10 pt-8">
         <h1 className="text-[24px] mb-3 text-center font-semibold">
           Pet Projects
         </h1>
