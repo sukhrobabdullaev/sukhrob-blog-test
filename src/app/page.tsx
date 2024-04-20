@@ -8,7 +8,7 @@ export default function Home() {
       <div className="flex space-y-3 flex-col items-center justify-center">
         <div className="relative md:w-36 md:h-36 w-24 h-24">
           <Image
-            src="/profile.png"
+            src="/profile.jpg"
             alt="avatar"
             className="rounded-full object-cover"
             fill
@@ -29,6 +29,9 @@ export default function Home() {
             <Link href="/aboutme">About me</Link>
           </Button>
         </div>
+        {/* <Button variant="secondary">
+          <Link href="/projects">Projects</Link>
+        </Button> */}
       </div>
     </main>
   );
