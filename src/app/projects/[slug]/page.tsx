@@ -116,10 +116,10 @@ const ProjectDetailedPage = async ({
           <div className="mt-2 ">
             <p className="pb-2 border-b">{data.description}</p>
             <div
-              className="pt-2"
               dangerouslySetInnerHTML={{
                 __html: mapHtmlToTailwind(data?.content?.html),
               }}
+              className="pt-2"
             />
           </div>
         </div>
