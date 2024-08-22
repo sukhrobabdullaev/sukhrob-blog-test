@@ -1,11 +1,15 @@
+'use client'
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import DotPattern from "@/components/magicui/dot-pattern";
 
 export default function Home() {
   return (
     <main className="flex items-center justify-center min-h-[94vh]">
-      <div className="flex space-y-3 flex-col items-center justify-center">
+      <div className="flex space-y-3 flex-col items-center justify-center z-10 relative">
         <div className="relative md:w-36 md:h-36 w-24 h-24">
           <Image
             src="/profile.jpg"
@@ -29,10 +33,12 @@ export default function Home() {
             <Link href="/aboutme">About me</Link>
           </Button>
         </div>
-        {/* <Button variant="secondary">
-          <Link href="/projects">Projects</Link>
-        </Button> */}
       </div>
+      <DotPattern
+        className={cn(
+          "md:[mask-image:radial-gradient(350px_circle_at_center,white,transparent)] [mask-image:radial-gradient(250px_circle_at_center,white,transparent)]",
+        )}
+      />
     </main>
   );
 }
