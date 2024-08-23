@@ -23,7 +23,7 @@ export default function Home() {
         <h1 className="text-lg font-semibold">Sukhrob Abdullaev</h1>
         <div className="text-center flex flex-col md:text-base text-md">
           <span>A Software Engineer</span>
-          <span> Computer Science enthusiast</span>
+          <span className="text-cyan-500 font-semibold"> Computer Science enthusiast</span>
         </div>
         <div className="flex items-center space-x-3">
           <Button variant="outline">

@@ -44,8 +44,12 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <div className="flex md:max-w-[1220px] mx-auto md:pt-32 pt-20 items-center flex-col justify-center">
-      <BlurImages/>
-      <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg bg-background px-20 pb-20 pt-8 ">
+      <div className="max-w-5xl mx-auto px-8 ">
+        <h1 className="font-bold text-3xl md:text-5xl leading-tight dark:text-zinc-50 max-w-3xl">I'm Software Engineer who is <span className="text-cyan-500">building projects.</span></h1>
+        <p className="text-zinc-400 text-sm md:text-base max-w-2xl mt-8 leading-loose tracking-wide pb-10">PROFILE section is here...</p></div>
+      <BlurImages />
+      <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg bg-background px-20 pb-20 pt-8 flex-col">
+        <h1 className="bg-gradient-to-r from-cyan-800 via-cyan-500  bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">Skills</h1>
         <IconCloud iconSlugs={slugs} />
       </div>
     </div>

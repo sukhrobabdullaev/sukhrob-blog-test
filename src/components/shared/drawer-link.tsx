@@ -15,7 +15,7 @@ const DrawerLinks: React.FC<Props> = ({ setOpen }) => {
       <Link
         href="/projects"
         onClick={() => setOpen(false)}
-        className="md:hover:scale-[0.9] text-center md:transition-all w-1/2 mx-auto  rounded-sm md:p-0 p-2 active:bg-green-500 hover:bg-green-700  md:hover:bg-transparent md:text-green-400 font-semibold md:hover:text-green-500 md:dark:hover:text-green-500"
+        className="md:hover:scale-[0.9] text-center md:transition-all w-1/2 mx-auto  rounded-sm md:p-0 p-2 active:bg-cyan-500 hover:bg-cyan-700  md:hover:bg-transparent md:text-cyan-400 font-semibold md:hover:text-cyan-500 md:dark:hover:text-cyan-500"
       >
         Projects
       </Link>
