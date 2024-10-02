@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="p-3 fixed z-50 top-0 right-0 left-0 w-full transition-all  backdrop-blur-sm">
-      <div className="flex items-center justify-between md:max-w-[1220px] mx-auto ">
+      <div className="flex items-center justify-between md:max-w-[800px] mx-auto ">
         <Link href="/" className={cn("font-semibold md:text-lg text-md flex items-center gap-2")}>
           Sukhrob's blog
         </Link>

@@ -19,15 +19,14 @@ export async function generateMetadata(
   const petProjects = await ProjectsService.getPetPro(id);
 
   return {
-    title: `Project | ${
-      project
+    title: `Project | ${project
         ? project.title.substring(0, 20)
         : personalProjects
-        ? personalProjects.title.substring(0, 20)
-        : petProjects
-        ? petProjects.title.substring(0, 20)
-        : "not found"
-    }...`,
+          ? personalProjects.title.substring(0, 20)
+          : petProjects
+            ? petProjects.title.substring(0, 20)
+            : "not found"
+      }...`,
   };
 }
 
@@ -97,7 +96,7 @@ const ProjectDetailedPage = async ({
   return (
     <>
       {data && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+        <div className="md: mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
           <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">

@@ -27,7 +27,7 @@ const BlogPage = async () => {
   // console.log(latestPost);
 
   return (
-    <div className="md:max-w-[1220px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">
+    <div className="md:max-w-[800px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">
       <div className="flex flex-1 overflow-auto flex-col gap-4">
         {data && data.length > 0 ? (
           data.map((post: BlogsType) => {
@@ -38,7 +38,7 @@ const BlogPage = async () => {
         )}
       </div>
       {/* <CardSkeleton /> */}
-      <div className="flex flex-col gap-4 md:sticky md:top-16 md:w-80 md:h-80 p-4">
+      {/* <div className="flex flex-col gap-4 md:sticky md:top-16 md:w-80 md:h-80 p-4">
         <h3 className="text-center  font-bold md:text-3xl  text-2xl">
           Latest post
         </h3>
@@ -51,7 +51,7 @@ const BlogPage = async () => {
             <h3>No posts available.</h3>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

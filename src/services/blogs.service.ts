@@ -24,7 +24,7 @@ export const BlogsService = {
   async getAllBlog() {
     const query = gql`
       query Posts {
-        posts {
+        posts(orderBy: createdAt_DESC) {
           createdAt
           date
           excerpt
@@ -64,6 +64,9 @@ export const BlogsService = {
           content {
             html
             text
+          }
+          category {
+            label
           }
         }
       }

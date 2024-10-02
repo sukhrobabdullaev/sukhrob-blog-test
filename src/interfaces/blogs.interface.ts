@@ -31,6 +31,7 @@ export interface IsinglePost {
     html: string;
     text: string;
   };
+  category: { label: string };
   createdAt: string;
 }
 
