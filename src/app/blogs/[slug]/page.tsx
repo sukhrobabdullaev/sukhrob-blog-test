@@ -35,7 +35,6 @@ async function getData(id: string) {
 
 const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   const data = await getData(params.slug);
-  console.log(data);
 
   if (!data) {
     return <NotFound />;
@@ -66,7 +65,7 @@ const BlogDetailedPage = async ({ params }: { params: { slug: string } }) => {
   };
 
   return (
-    <div className="md:max-w-[800px] mx-auto md:pt-32 pt-20 overflow-y-auto top-scroll">
+    <div className="md:max-w-[800px] mx-auto px-4 md:pt-32 pt-20 overflow-y-auto top-scroll">
       <div className="pb-2 border-b">
           <Link href="/blogs" className="flex gap-2 items-center">
             <ArrowLeftCircleIcon className="w-5 h-5 text-green-600" /> 

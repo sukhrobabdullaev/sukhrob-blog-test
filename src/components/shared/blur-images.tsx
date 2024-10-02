@@ -14,7 +14,7 @@ export function BlurImages() {
             <Image
               className="mb-4 size-full rounded-lg object-contain"
               src={imageUrl}
-              alt={`Random stock image ${idx + 1}`}
+              alt={`my personal img`}
               height={500}
               width={400}
             />

@@ -71,17 +71,16 @@ const ProjectDetailedPage = async ({
   const mapHtmlToTailwind = (html: string) => {
     // Define mappings for HTML tags to Tailwind CSS classes
     const tagMappings: { [key: string]: string } = {
-      h1: "text-4xl font-bold mb-4",
-      h2: "md:text-3xl text-xl font-bold mb-3",
-      h3: "md:text-2xl text-xl font-bold mb-2",
-      p: "text-base mb-2",
+      h1: "md:text-2xl font-bold mt-10 mb-8",
+      h2: "md:text-xl font-bold mt-10 mb-8",
+      h3: "md:text-lg font-bold mt-10 mb-8",
+      p: "text-base my-8",
       a: "text-blue-400",
-      ul: "list-disc ml-10 my-4",
+      ul: "list-disc my-8 pl-10",
       ol: "list-decimal ml-10 my-4",
-      pre: "bg-gray-100 dark:bg-gray-800 overflow-y-scroll rounded-md p-2 text-sm ",
-      code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm",
-      img: "border-red-300 border",
-      // Add more mappings for other HTML tags as needed
+      code: "bg-gray-100 dark:bg-gray-800 rounded-md p-2 text-sm text-green-400", // Tailwind for code
+      pre: "bg-gray-900 text-gray-100 dark:bg-gray-800 overflow-x-auto rounded-md p-4 text-sm", // Updated style for pre
+      img: "rounded-xl",
     };
 
     // Replace each HTML tag with its corresponding Tailwind CSS classes
@@ -96,7 +95,7 @@ const ProjectDetailedPage = async ({
   return (
     <>
       {data && (
-        <div className="md: mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+        <div className="md:max-w-[800px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
           <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
@@ -124,7 +123,7 @@ const ProjectDetailedPage = async ({
         </div>
       )}
       {personalProjects && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+        <div className="md:max-w-[800px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
           <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
@@ -154,7 +153,7 @@ const ProjectDetailedPage = async ({
         </div>
       )}
       {petProjects && (
-        <div className="md:max-w-[1000px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
+        <div className="md:max-w-[800px] mx-auto md:pt-24 pt-20 px-4 overflow-y-auto top-scroll">
           <div className="pb-2 border-b">
             <div className="flex gap-2 items-center">
               <Link href="/projects" className="inline-block animate-moveLeft">
