@@ -1,5 +1,5 @@
 import BlogCard from "@/components/shared/blog-card";
-import LatestCard from "@/components/shared/latest-card";
+// import LatestCard from "@/components/shared/latest-card";
 import { BlogsType } from "@/interfaces/blogs.interface";
 import { BlogsService } from "@/services/blogs.service";
 
@@ -12,18 +12,18 @@ async function getData() {
   }
 }
 
-async function getLatestPost() {
-  try {
-    const latestPost = await BlogsService.getLatestOne();
-    return latestPost;
-  } catch (error) {
-    return null;
-  }
-}
+// async function getLatestPost() {
+//   try {
+//     const latestPost = await BlogsService.getLatestOne();
+//     return latestPost;
+//   } catch (error) {
+//     return null;
+//   }
+// }
 
 const BlogPage = async () => {
   const data = await getData();
-  const latestPost = await getLatestPost();
+  // const latestPost = await getLatestPost();
 
   return (
     <div className="md:max-w-[800px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">

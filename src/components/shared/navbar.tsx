@@ -11,6 +11,7 @@ import {
 } from "@radix-ui/react-icons";
 import MobileDrawer from "./mobile-drawer";
 import DrawerLinks from "./drawer-link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -25,7 +26,12 @@ const Navbar = () => {
     <div className="p-3 fixed z-50 top-0 right-0 left-0 w-full transition-all  backdrop-blur-sm">
       <div className="flex items-center justify-between md:max-w-[800px] mx-auto ">
         <Link href="/" className={cn("font-semibold md:text-lg text-md flex items-center gap-2")}>
-          Sukhrob's blog
+          <Image
+            src="/blog_logo.png"
+            width={70}
+            height={70}
+            alt="Picture of the author"
+          />
         </Link>
         <div className="flex items-center">
           <div className="flex space-x-2 items-center">
