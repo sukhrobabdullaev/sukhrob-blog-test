@@ -3,9 +3,9 @@ import LatestCard from "@/components/shared/latest-card";
 import { BlogsType } from "@/interfaces/blogs.interface";
 import { BlogsService } from "@/services/blogs.service";
 
-function getData() {
+async function getData() {
   try {
-    const res = BlogsService.getAllBlog();
+    const res = await BlogsService.getAllBlog();
     return res;
   } catch (error) {
     return [];
@@ -24,7 +24,6 @@ async function getLatestPost() {
 const BlogPage = async () => {
   const data = await getData();
   const latestPost = await getLatestPost();
-  // console.log(latestPost);
 
   return (
     <div className="md:max-w-[800px] flex justify-between md:flex-row md:gap-0 gap-4 flex-col-reverse mx-auto md:pt-32 pt-20 ">
